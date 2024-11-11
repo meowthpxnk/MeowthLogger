@@ -1,5 +1,7 @@
 from typing import Optional
+
 from ..utilities.log_streaming.stream_manager import Stream
+
 
 class LoggerSettings:
     """### Settings of root logger
@@ -10,6 +12,7 @@ class LoggerSettings:
     - path: logging files path. Example: "logs/logfiles"
     - use_uvicorn: bool argument for use with uvicorn
     """
+
     def __init__(
         self,
         logger_level: str,
@@ -18,7 +21,7 @@ class LoggerSettings:
         encoding: str,
         path: str,
         use_uvicorn: bool,
-        stream: Optional[Stream]
+        stream: Optional[Stream],
     ):
         self.logger_level = logger_level
         self.use_files = use_files

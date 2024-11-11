@@ -1,31 +1,28 @@
 from abc import ABC
 
 from .abstract import AbstractLoggerConfig
-from .utils import (
-    ConfigFormatter,
-    ConfigHandler,
-    ConfigLogger,
-)
+from .utils import ConfigFormatter, ConfigHandler, ConfigLogger
+
 
 class ConfigConsoleHandler(ConfigHandler):
-    def __init__(self, 
-        stream: str, 
-        *args, **kwargs
-    ):
+    def __init__(self, stream: str, *args, **kwargs):
         self.stream = stream
         super().__init__(*args, **kwargs)
-    
+
     def json(self) -> dict:
         json = super().json()
-        json.update({
-            "stream": self.stream,
-        })
+        json.update(
+            {
+                "stream": self.stream,
+            }
+        )
         return json
+
 
 class ConsoleLogger(AbstractLoggerConfig, ABC):
     def _use_console(self) -> None:
         colorised_formatter = ConfigFormatter(
-            name="colorised", 
+            name="colorised",
             class_name="MeowthLogger.formatters.ColorisedFormatter",
         )
         self.formatters.append(colorised_formatter)

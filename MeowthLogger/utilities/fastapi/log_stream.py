@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta
+
 from fastapi import WebSocket
 
 from MeowthLogger.constants import REQUEST_DATESTRING_FORMAT
@@ -6,11 +7,12 @@ from MeowthLogger.utilities.dates import set_null_minutes
 
 from ..log_streaming.stream_manager import Stream
 
+
 class StreamManager(Stream):
     def __init__(self, loop):
         self.active_connections: list[WebSocket] = []
         self.loop = loop
-    
+
     @property
     def _prev_logs(self):
         prev_date = datetime.now()
@@ -20,14 +22,11 @@ class StreamManager(Stream):
 
         logs_lines = []
         while True:
-            line = file.readline().decode('utf-8')
+            line = file.readline().decode("utf-8")
             if not line:
                 break
             logs_lines.append(line)
-        return "ROOTMSG" + "".join([
-            line
-            for line in logs_lines[-1000:]
-        ])
+        return "ROOTMSG" + "".join([line for line in logs_lines[-1000:]])
 
     async def connect(self, websocket: WebSocket):
         await websocket.accept()

@@ -1,10 +1,8 @@
 from MeowthLogger.utilities.abstractions import Dictable
 
+
 class ConfigFormatter(Dictable):
-    def __init__(self, 
-        name: str,
-        class_name: str
-    ):
+    def __init__(self, name: str, class_name: str):
         self.name = name
         self.class_name = class_name
 
@@ -13,12 +11,14 @@ class ConfigFormatter(Dictable):
             "()": self.class_name,
         }
 
+
 class ConfigHandler(Dictable):
-    def __init__(self, 
-        name: str, 
+    def __init__(
+        self,
+        name: str,
         class_name: str,
         formatter: ConfigFormatter,
-        level: str
+        level: str,
     ):
         self.name = name
         self.class_name = class_name
@@ -32,44 +32,35 @@ class ConfigHandler(Dictable):
             "level": self.level,
         }
 
+
 class ConfigLogger(Dictable):
     def __init__(
         self,
         name: str,
         level: str,
         handlers: list[ConfigHandler],
-        propagate: bool
+        propagate: bool,
     ):
         self.name = name
         self.level = level
         self.handlers = handlers
         self.propagate = propagate
-    
+
     def json(self) -> dict:
         return {
             "level": self.level,
             "propagate": self.propagate,
-            "handlers": [
-                handler.name
-                for handler 
-                in self.handlers
-            ],
+            "handlers": [handler.name for handler in self.handlers],
         }
+
+
 class ConfigRoot(Dictable):
-    def __init__(
-        self,
-        level: str,
-        handlers: list[ConfigHandler]
-    ):
+    def __init__(self, level: str, handlers: list[ConfigHandler]):
         self.level = level
         self.handlers = handlers
-    
+
     def json(self) -> dict:
         return {
             "level": self.level,
-            "handlers": [
-                handler.name
-                for handler
-                in self.handlers
-            ],
+            "handlers": [handler.name for handler in self.handlers],
         }

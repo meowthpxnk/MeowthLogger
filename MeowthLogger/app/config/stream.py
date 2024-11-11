@@ -2,15 +2,13 @@ from abc import ABC
 
 from .abstract import AbstractLoggerConfig
 from .console import ConfigConsoleHandler
-from .utils import (
-    ConfigFormatter,
-    ConfigLogger,
-)
+from .utils import ConfigFormatter, ConfigLogger
+
 
 class StreamLogger(AbstractLoggerConfig, ABC):
     def _use_stream(self) -> None:
         formatter = ConfigFormatter(
-            name="ws_stream", 
+            name="ws_stream",
             class_name="MeowthLogger.formatters.DefaultFormatter",
         )
         self.formatters.append(formatter)

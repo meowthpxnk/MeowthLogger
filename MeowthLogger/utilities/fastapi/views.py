@@ -1,14 +1,13 @@
-from fastapi import WebSocket, WebSocketDisconnect
+from fastapi import APIRouter, WebSocket, WebSocketDisconnect
 from fastapi.responses import HTMLResponse
 
-from fastapi import APIRouter
 from ..log_streaming.log_streaming import get_log_stream_html
 
 
-def get_log_stream_views_router(logger, router: APIRouter= None):
+def get_log_stream_views_router(logger, router: APIRouter = None):
     if not router:
         router = APIRouter(include_in_schema=False)
-    
+
     @router.get("/logs")
     async def get():
         html = get_log_stream_html()
@@ -22,6 +21,5 @@ def get_log_stream_views_router(logger, router: APIRouter= None):
                 await websocket.receive_text()
         except WebSocketDisconnect:
             logger.settings.stream.disconnect(websocket)
-    
+
     return router
-    

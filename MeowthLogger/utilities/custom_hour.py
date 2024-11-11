@@ -1,14 +1,15 @@
 class Hour:
-    """Using for validating hour and preparing previous or next hour of hour
-    """
+    """Using for validating hour and preparing previous or next hour of hour"""
+
     hour: int
+
     def __init__(self, hour):
         self.validate_hour(hour)
         self.hour = hour
-    
+
     def __repr__(self) -> str:
         return f"<UtilHour: {self.hour}>"
-    
+
     def __str__(self) -> str:
         if self.hour <= 9:
             return f"0{self.hour}"
@@ -27,7 +28,7 @@ class Hour:
         if hour <= -1:
             return self.__class__(23)
         return self.__class__(hour)
-    
+
     @staticmethod
     def validate_hour(hour: int) -> None:
         if hour >= 24 or hour < 0:

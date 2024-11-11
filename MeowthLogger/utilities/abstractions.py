@@ -1,17 +1,18 @@
 import os
-
 from abc import ABC
 from datetime import datetime
 
+
 class Dictable(ABC):
-    """Abstraction for jsonify objects
-    """
+    """Abstraction for jsonify objects"""
+
     def json(self) -> dict:
         raise NotImplementedError
 
+
 class DateNameFile(ABC):
-    """Absctraction for read files path and compare by dates
-    """
+    """Absctraction for read files path and compare by dates"""
+
     path: str
     name: str
     date: datetime

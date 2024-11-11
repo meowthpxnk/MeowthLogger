@@ -1,11 +1,8 @@
 from abc import ABC
 
 from .abstract import AbstractLoggerConfig
-from .utils import (
-    ConfigFormatter,
-    ConfigHandler,
-    ConfigLogger,
-)
+from .utils import ConfigFormatter, ConfigHandler, ConfigLogger
+
 
 class ConfigFileHandler(ConfigHandler):
     def __init__(
@@ -14,28 +11,32 @@ class ConfigFileHandler(ConfigHandler):
         encoding: str,
         path: str,
         max_log_alive_time: int,
-        *args, **kwargs
+        *args,
+        **kwargs
     ):
         self.when = when
         self.encoding = encoding
         self.path = path
         self.max_log_alive_time = max_log_alive_time
         super().__init__(*args, **kwargs)
-    
+
     def json(self) -> dict:
         json = super().json()
-        json.update({
-            "when": self.when,
-            "encoding": self.encoding,
-            "path": self.path,
-            "max_log_alive_time": self.max_log_alive_time,
-        })
+        json.update(
+            {
+                "when": self.when,
+                "encoding": self.encoding,
+                "path": self.path,
+                "max_log_alive_time": self.max_log_alive_time,
+            }
+        )
         return json
-    
+
+
 class FileLogger(AbstractLoggerConfig, ABC):
     def _use_files(self) -> None:
         default_formatter = ConfigFormatter(
-            name="default", 
+            name="default",
             class_name="MeowthLogger.formatters.DefaultFormatter",
         )
         self.formatters.append(default_formatter)

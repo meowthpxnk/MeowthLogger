@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "MeowthLogger"
-version = "2.3"
+version = "2.5"
 description = "Colorised logger for python, using logging python lib"
 readme = "README.md"
 license = { text = "MIT" }
@@ -20,4 +20,4 @@ classifiers = [
 dependencies = ["colorama==0.4.6"]
 
 [project.urls]
-homepage = "https://github.com/MeowthLogger"
+github = "https://github.com/meowthpxnk/MeowthLogger"

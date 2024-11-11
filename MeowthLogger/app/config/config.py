@@ -1,26 +1,26 @@
 from ..settings import LoggerSettings
-
 from .abstract import AbstractLoggerConfig
-from .uvicorn import UvicornLogger
-from .file import FileLogger
 from .console import ConsoleLogger
+from .file import FileLogger
 from .stream import StreamLogger
-    
+from .uvicorn import UvicornLogger
+
+
 class MainLoggerConfig(
-        FileLogger, 
-        ConsoleLogger, 
-        UvicornLogger,
-        StreamLogger,
-        AbstractLoggerConfig,
-    ):
+    FileLogger,
+    ConsoleLogger,
+    UvicornLogger,
+    StreamLogger,
+    AbstractLoggerConfig,
+):
 
     def __init__(
         self,
         settings: LoggerSettings,
         version: int = 1,
     ):
-        super().__init__(settings, version)        
-        
+        super().__init__(settings, version)
+
         self._use_console()
 
         if settings.use_files:
@@ -28,6 +28,6 @@ class MainLoggerConfig(
 
         if settings.use_uvicorn:
             self._use_uvicorn()
-        
+
         if settings.stream:
             self._use_stream()

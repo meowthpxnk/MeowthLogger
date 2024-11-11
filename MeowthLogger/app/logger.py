@@ -1,16 +1,18 @@
-from typing import Optional
-from logging.config import dictConfig
 from logging import getLogger
+from logging.config import dictConfig
+from typing import Optional
 
 from MeowthLogger.constants import (
     DEFAULT_ENCODING,
     DEFAULT_LOGGING_LEVEL,
     DEFAULT_PATH,
 )
-from .parser import LogParser
-from .config import MainLoggerConfig
-from .settings import LoggerSettings
+
 from ..utilities.log_streaming.stream_manager import Stream
+from .config import MainLoggerConfig
+from .parser import LogParser
+from .settings import LoggerSettings
+
 
 class AbstractLogger:
     def __init__(self, logger):
@@ -20,19 +22,20 @@ class AbstractLogger:
         self.error = logger.error
         self.warning = logger.warning
 
+
 class Logger(LogParser, AbstractLogger):
     settings: LoggerSettings
 
     def __init__(
-            self,
-            logger_level: str = DEFAULT_LOGGING_LEVEL,
-            use_files: bool = True,
-            log_alive_seconds: Optional[int] = 604800,
-            encoding: str = DEFAULT_ENCODING,
-            path: str = DEFAULT_PATH,
-            use_uvicorn: bool = False,
-            stream: Optional[Stream] = None,
-        ):
+        self,
+        logger_level: str = DEFAULT_LOGGING_LEVEL,
+        use_files: bool = True,
+        log_alive_seconds: Optional[int] = 604800,
+        encoding: str = DEFAULT_ENCODING,
+        path: str = DEFAULT_PATH,
+        use_uvicorn: bool = False,
+        stream: Optional[Stream] = None,
+    ):
 
         self.settings = LoggerSettings(
             logger_level=logger_level,
@@ -41,7 +44,7 @@ class Logger(LogParser, AbstractLogger):
             encoding=encoding,
             path=path,
             use_uvicorn=use_uvicorn,
-            stream=stream
+            stream=stream,
         )
 
         if stream:
