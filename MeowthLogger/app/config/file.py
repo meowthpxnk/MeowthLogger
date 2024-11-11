@@ -13,7 +13,7 @@ class ConfigFileHandler(ConfigHandler):
         max_log_alive_time: int,
         *args,
         **kwargs
-    ):
+    ) -> None:
         self.when = when
         self.encoding = encoding
         self.path = path

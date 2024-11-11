@@ -20,7 +20,7 @@ class AbstractLoggerConfig(Dictable, ABC):
         self,
         settings: LoggerSettings,
         version: int,
-    ):
+    ) -> None:
         self.settings = settings
         self.version = version
 

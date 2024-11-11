@@ -15,7 +15,7 @@ from .settings import LoggerSettings
 
 
 class AbstractLogger:
-    def __init__(self, logger):
+    def __init__(self, logger) -> None:  # noqa: ANN001
         self.info = logger.info
         self.critical = logger.critical
         self.debug = logger.debug
@@ -35,7 +35,7 @@ class Logger(LogParser, AbstractLogger):
         path: str = DEFAULT_PATH,
         use_uvicorn: bool = False,
         stream: Optional[Stream] = None,
-    ):
+    ) -> None:
 
         self.settings = LoggerSettings(
             logger_level=logger_level,

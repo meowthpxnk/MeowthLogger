@@ -4,7 +4,7 @@ class NotDateLogString(Exception):
 
 
 class NotValidFile(ValueError):
-    def __init__(self, path) -> None:
+    def __init__(self, path: str) -> None:
         super().__init__(f"File {path} is not valid log file")
 
 

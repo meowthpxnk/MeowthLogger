@@ -15,10 +15,10 @@ from MeowthLogger.utilities.dates import date_from_logstring, set_null_minutes
 
 
 class LogFile:
-    def __init__(self, path):
+    def __init__(self, path: str) -> None:
         self.path = path
 
-    def get_last_date(self):
+    def get_last_date(self) -> datetime:
         with open(self.path, "rb") as file:
             lines = file.readlines()
             try:
@@ -41,7 +41,9 @@ class LogFile:
 
 
 class FileHandler(TimedRotatingFileHandler):
-    def __init__(self, path, max_log_alive_time, *args, **kwargs):
+    def __init__(
+        self, path: str, max_log_alive_time: int, *args, **kwargs
+    ) -> None:
         self.max_log_alive_time = max_log_alive_time
         self.path = path
         self.generate_root_path()
@@ -98,7 +100,7 @@ class FileHandler(TimedRotatingFileHandler):
     # Rollovering block ---- <
 
     # Clearing block ---- >
-    def clear_files(self):
+    def clear_files(self) -> None:
         delta = timedelta(seconds=self.max_log_alive_time)
         dt_del = datetime.now() - delta
 

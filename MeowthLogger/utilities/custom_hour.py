@@ -3,7 +3,7 @@ class Hour:
 
     hour: int
 
-    def __init__(self, hour):
+    def __init__(self, hour: int) -> None:
         self.validate_hour(hour)
         self.hour = hour
 

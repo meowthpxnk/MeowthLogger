@@ -14,7 +14,7 @@ api = FastAPI()
 
 
 @api.get("/")
-async def home():
+async def home() -> dict[str, bool]:
     return {"ok": True}
 
 
@@ -30,7 +30,7 @@ config = Config(app=api, host="0.0.0.0", log_config=None)
 server = Server(config)
 
 
-async def main():
+async def main() -> None:
     await server.serve()
 
 

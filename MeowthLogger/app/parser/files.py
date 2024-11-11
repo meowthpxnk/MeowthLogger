@@ -6,7 +6,7 @@ from MeowthLogger.utilities.abstractions import DateNameFile
 
 
 class LogFile(DateNameFile):
-    def __init__(self, day: datetime, name: str, path: str):
+    def __init__(self, day: datetime, name: str, path: str) -> None:
         self.path = path
         self.name = name
         hour = int(name[:2])
@@ -18,7 +18,7 @@ class LogFile(DateNameFile):
 
 
 class RootLogFile(LogFile):
-    def __init__(self, name: str, path: str):
+    def __init__(self, name: str, path: str) -> None:
         self.name = name
         self.path = path
 
@@ -29,7 +29,7 @@ class LogDirectory(DateNameFile):
 
     files: list[LogFile]
 
-    def __init__(self, name: str, path: str):
+    def __init__(self, name: str, path: str) -> None:
         self.name = name
         self.date = datetime.strptime(
             name,
@@ -57,7 +57,7 @@ class DirectoriesTree:
 
     dirs: list[LogDirectory]
 
-    def __init__(self, path) -> None:
+    def __init__(self, path: str) -> None:
         dir_list = os.listdir(path)
 
         if DEFAULT_LOGGING_FILENAME in dir_list:
@@ -67,7 +67,7 @@ class DirectoriesTree:
             [LogDirectory(dir_name, path) for dir_name in dir_list]
         )
 
-    def sort_files(self, date_from, date_to) -> None:
+    def sort_files(self, date_from: datetime, date_to: datetime) -> None:
         """Sorting self all files by requested dates"""
 
         if not self.dirs:

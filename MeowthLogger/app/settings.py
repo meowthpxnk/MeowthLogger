@@ -22,7 +22,7 @@ class LoggerSettings:
         path: str,
         use_uvicorn: bool,
         stream: Optional[Stream],
-    ):
+    ) -> None:
         self.logger_level = logger_level
         self.use_files = use_files
         self.log_alive_seconds = log_alive_seconds

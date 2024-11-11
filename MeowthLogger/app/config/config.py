@@ -18,7 +18,7 @@ class MainLoggerConfig(
         self,
         settings: LoggerSettings,
         version: int = 1,
-    ):
+    ) -> None:
         super().__init__(settings, version)
 
         self._use_console()

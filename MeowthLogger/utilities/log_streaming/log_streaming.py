@@ -1,7 +1,9 @@
 import os
 
 
-def get_log_stream_html(title="Log streamer", ws_url=None):
+def get_log_stream_html(
+    title: str = "Log streamer", ws_url: str = None
+) -> str:
     path = os.path.abspath(
         os.path.join(__file__, os.pardir, "LogStreaming.html")
     )

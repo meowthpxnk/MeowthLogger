@@ -1,4 +1,5 @@
 import logging
+from datetime import datetime
 
 from colorama import Back, Fore, Style
 
@@ -8,12 +9,12 @@ from .formatter import AbstractFormatter
 class ColorisedFormatter(AbstractFormatter):
     def prepare_log_string(
         self,
-        datetime,
-        levelname,
-        filename,
-        line,
-        message,
-    ):
+        datetime: datetime,
+        levelname: str,
+        filename: str,
+        line: str,
+        message: str,
+    ) -> str:
 
         datetime = f"{Style.DIM}{datetime}{Style.NORMAL}"
         filename = f"{Fore.LIGHTYELLOW_EX}{filename}{Fore.RESET}"
@@ -27,7 +28,7 @@ class ColorisedFormatter(AbstractFormatter):
             message,
         )
 
-    def prepare_levelname(self, levelname):
+    def prepare_levelname(self, levelname: int) -> str:
         match levelname:
             case logging.INFO:
                 return f"{Fore.GREEN}INFO{Fore.RESET}"

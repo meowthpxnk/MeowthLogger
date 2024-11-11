@@ -5,7 +5,7 @@ from .utils import ConfigFormatter, ConfigHandler, ConfigLogger
 
 
 class ConfigConsoleHandler(ConfigHandler):
-    def __init__(self, stream: str, *args, **kwargs):
+    def __init__(self, stream: str, *args, **kwargs) -> None:
         self.stream = stream
         super().__init__(*args, **kwargs)
 

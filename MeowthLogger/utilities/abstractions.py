@@ -20,7 +20,7 @@ class DateNameFile(ABC):
     def __repr__(self) -> str:
         return f"<{self.__class__.__name__} '{self.name}'>"
 
-    def __lt__(self, other) -> bool:
+    def __lt__(self, other) -> bool:  # noqa: ANN001
         if isinstance(other, self.__class__):
             return self.date < other.date
         raise ValueError(f"Other not {self.__class__.__name__} class")
