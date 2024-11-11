@@ -12,10 +12,12 @@ name: Publish to PyPI
 
 on:
     workflow_run:
-        workflows: ["Pre-commit Hooks"]
-        # types: [requested]
-        # branches:
-        #   - 'releases/**'
+        workflows: ["Pre-commit Hooks"] # Имя workflow, указанное в первом файле
+        types:
+            - completed
+              # types: [requested]
+              # branches:
+              #   - 'releases/**'
 
 jobs:
     build:
