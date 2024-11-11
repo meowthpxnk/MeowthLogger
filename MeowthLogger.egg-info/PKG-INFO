@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: MeowthLogger
-Version: 2.5
+Version: 2.5.1
 Summary: Colorised logger for python, using logging python lib
 Author-email: Meowthpxnk <meowthpxnk@gmail.com>
 License: MIT
