@@ -1,23 +1,11 @@
 name: Publish to PyPI
 
-# on:
-#     workflow_run:
-#         workflows: ["Pre-commit Hooks"]
-#         # types:
-#         #     - completed
-#         # # Убедитесь, что это происходит только для пуша в master
-#         # branches:
-#         #     - master
-#         # conclusion: success
-
 on:
     workflow_run:
-        workflows: ["Pre-commit Hooks"] # Имя workflow, указанное в первом файле
+        workflows: ["Pre-commit Hooks"] # Имя первого workflow
         types:
             - completed
-              # types: [requested]
-              # branches:
-              #   - 'releases/**'
+        conclusion: success # Убедитесь, что второй workflow запускается только при успешном завершении первого
 
 jobs:
     build:
