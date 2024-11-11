@@ -1,4 +1,4 @@
-name: Precommit Hooks
+name: Pre-commit Hooks
 
 on: [push, pull_request]
 
