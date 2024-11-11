@@ -8,6 +8,7 @@ on:
         workflows: ["Pre-commit Hooks"]
         types:
             - completed
+        conclusion: success
 
 jobs:
     build:
