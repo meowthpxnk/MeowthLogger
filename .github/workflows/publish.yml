@@ -1,14 +1,21 @@
 name: Publish to PyPI
 
+# on:
+#     workflow_run:
+#         workflows: ["Pre-commit Hooks"]
+#         # types:
+#         #     - completed
+#         # # Убедитесь, что это происходит только для пуша в master
+#         # branches:
+#         #     - master
+#         # conclusion: success
+
 on:
     workflow_run:
-        workflows: ["pre-commit"]
-        # types:
-        #     - completed
-        # # Убедитесь, что это происходит только для пуша в master
+        workflows: ["Pre-commit Hooks"]
+        # types: [requested]
         # branches:
-        #     - master
-        # conclusion: success
+        #   - 'releases/**'
 
 jobs:
     build:
