@@ -36,3 +36,18 @@ class AbstractFormatter(logging.Formatter):
             line=line,
             message=message,
         )
+
+    def prepare_levelname(self, levelname: int) -> str:
+        match levelname:
+            case logging.INFO:
+                return f"INFO"
+            case logging.ERROR:
+                return f"ERROR"
+            case logging.WARN:
+                return f"WARNING"
+            case logging.DEBUG:
+                return f"DEBUG"
+            case logging.CRITICAL:
+                return f"CRITICAL"
+            case _:
+                return f"LEVEL :{levelname}"
